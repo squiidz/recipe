@@ -6,7 +6,7 @@ import (
 	"sync"
 )
 
-var baseURL = "https://www.metro.ca/"
+var baseURL = "https://www.metro.ca/en/"
 var productURL = "https://www.metro.ca/epicerie-en-ligne/allees/p/"
 
 var testLink = "https://www.metro.ca/epicerie-en-ligne/allees/produits-laitiers-et-fromages/mon-fromager/fromages-a-pate-molle-et-frais/fromage-camembert/p/3161910238710"
@@ -20,7 +20,7 @@ func main() {
 		wg.Add(1)
 		go func(ing Ingredient) {
 			defer wg.Done()
-			productName := processTerm(ing.raw)
+			productName := processTerm(ing.Name)
 			log.Println("Looking for", productName)
 			if trsl := FindTerm(productName); trsl != nil {
 				if product, err := GlobalDB.findLike(trsl.ValueTerm); err == nil {

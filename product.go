@@ -71,7 +71,7 @@ func (p *Product) save() error {
 
 // SearchProduct make a request to the metro.ca search url
 func SearchProduct(productName string) (string, error) {
-	res, err := http.Get(fmt.Sprintf("%srecherche?free-text=%s", baseURL, strings.Replace(productName, " ", "-", -1)))
+	res, err := http.Get(fmt.Sprintf("%ssearch?free-text=%s", baseURL, strings.Replace(productName, " ", "-", -1)))
 	if err != nil {
 		log.Fatal(err)
 	}
